@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示加载" />
+
+        <Button
+            android:id="@+id/btn_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示内容" />
+
+        <Button
+            android:id="@+id/btn_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示错误" />
+
+        <Button
+            android:id="@+id/btn_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示空数据" />
+    </LinearLayout>
+
+    <com.zk.loadingview.StatusView
+        android:id="@+id/statusView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="我是一个内容，需要验证" />
+
+    </com.zk.loadingview.StatusView>
+
+</LinearLayout>
