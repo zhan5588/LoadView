@@ -1,6 +1,8 @@
 package com.zk_demo.loadview;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_content;
     private Button btn_error;
     private Button btn_empty;
+    private Button btn_go;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +30,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_content = (Button) findViewById(R.id.btn_content);
         btn_error = (Button) findViewById(R.id.btn_error);
         btn_empty = (Button) findViewById(R.id.btn_empty);
-
+        btn_go = (Button) findViewById(R.id.btn_go);
 
         btn_loading.setOnClickListener(this);
         btn_content.setOnClickListener(this);
         btn_error.setOnClickListener(this);
         btn_empty.setOnClickListener(this);
+        btn_go.setOnClickListener(this);
 
         loading_view.config(new StatusViewBuilder.Builder().setOnErrorRetryClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +52,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         })
                 .build());
+
+        loading_view.showLoadingView();//显示加载界面
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading_view.showContentView();
+            }
+        }, 100);
     }
 
     @Override
@@ -64,6 +76,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_empty:
                 loading_view.showEmptyView();//显示空数据界面
+                break;
+            case R.id.btn_go:
+                startActivity(new Intent(this,Main2Activity.class));
                 break;
         }
     }

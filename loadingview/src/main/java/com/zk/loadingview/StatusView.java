@@ -78,6 +78,8 @@ public class StatusView extends FrameLayout {
         if (getChildCount() == 1) {
             View view = getChildAt(0);
             setContentView(view);
+        }else if (getChildCount() > 1){
+            throw new IllegalArgumentException("Child view can only be one");
         }
     }
 
@@ -171,7 +173,9 @@ public class StatusView extends FrameLayout {
      * 显示 原始内容 布局
      */
     public void showContentView() {
-        switchStatusView(contentView);
+        if (contentView != null){
+            switchStatusView(contentView);
+        }
     }
 
     /**
@@ -375,4 +379,9 @@ public class StatusView extends FrameLayout {
     private View inflate(int layoutId) {
         return LayoutInflater.from(context).inflate(layoutId, null);
     }
+
+    public void addContentView(@LayoutRes int layoutId){
+        setContentView(inflate(layoutId));
+    }
+
 }
