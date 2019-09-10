@@ -382,6 +382,7 @@ public class StatusView extends FrameLayout {
 
     public void addContentView(@LayoutRes int layoutId){
         setContentView(inflate(layoutId));
+        addView(contentView);
     }
 
 }
